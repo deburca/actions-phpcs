@@ -17,6 +17,10 @@ inputs:
     description: 'Standard used to check code style'
     required: false
     default: 'PEAR'
+  installed_paths:
+    description: 'Location of the sniffs'
+    required: false
+    default: ''
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -24,3 +28,4 @@ runs:
     - ${{ inputs.dir }} 
     - ${{ inputs.extensions }}
     - ${{ inputs.standard }}
+    - ${{ inputs.installed_paths }}
