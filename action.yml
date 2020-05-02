@@ -21,4 +21,6 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.dir }} ${{ inputs.extensions }}
+    - ${{ inputs.dir }} 
+    - ${{ inputs.extensions }}
+    - ${{ inputs.standard }}
