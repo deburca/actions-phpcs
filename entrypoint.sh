@@ -16,7 +16,7 @@ else
 fi
 
 if [ -z "$3" ]; then
-  STANDARD="phpcs.xml.dist"
+  STANDARD="PEAR"
 else
   STANDARD="$3"
 fi
@@ -33,4 +33,4 @@ if [ ! -d "${DIR_TO_SCAN}" ] && [ ! -f "${DIR_TO_SCAN}" ]; then
 fi
 
 echo "php -d memory_limit=-1 /phpcs ${DIR_TO_SCAN} --standard=${STANDARD} --extensions=${EXTENSIONS} -pv"
-php -d memory_limit=-1 /phpcs ${DIR_TO_SCAN} -pv
+php -d memory_limit=-1 /phpcs ${DIR_TO_SCAN} --standard=${STANDARD} --extensions=${EXTENSIONS} -pv
