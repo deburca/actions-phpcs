@@ -15,6 +15,12 @@ else
   EXTENSIONS="$2"
 fi
 
+if [ -z "$3" ]; then
+  STANDARD="phpcs.xml.dist"
+else
+  STANDARD="$3"
+fi
+
 echo "## Running PHPCS on ${DIR_TO_SCAN}"
 echo "PHP Version : ${PHP_FULL_VERSION}"
 
@@ -26,5 +32,5 @@ if [ ! -d "${DIR_TO_SCAN}" ] && [ ! -f "${DIR_TO_SCAN}" ]; then
   exit 2
 fi
 
-echo "php -d memory_limit=-1 /phpcs ${DIR_TO_SCAN} --extensions=${EXTENSIONS} -pv"
+echo "php -d memory_limit=-1 /phpcs ${DIR_TO_SCAN} --standard=${STANDARD} --extensions=${EXTENSIONS} -pv"
 php -d memory_limit=-1 /phpcs ${DIR_TO_SCAN} -pv
