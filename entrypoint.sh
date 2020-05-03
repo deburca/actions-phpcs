@@ -39,6 +39,7 @@ if [ ! -d "${DIR_TO_SCAN}" ] && [ ! -f "${DIR_TO_SCAN}" ]; then
 fi
 
 echo "php -d memory_limit=-1 /phpcs ${DIR_TO_SCAN} --standard=${STANDARD} --extensions=${EXTENSIONS} -pv"
+echo "setting installed_paths to ${INSTALLED_PATHS}"
 
 php -d memory_limit=-1 /phpcs --config-set installed_paths ${INSTALLED_PATHS}
 
