@@ -16,7 +16,7 @@ else
 fi
 
 if [ -z "$3" ]; then
-  STANDARD="PEAR"
+  STANDARD="DrupalPractice"
 else
   STANDARD="$3"
 fi
@@ -42,4 +42,6 @@ echo "php -d memory_limit=-1 /phpcs ${DIR_TO_SCAN} --standard=${STANDARD} --exte
 
 php -d memory_limit=-1 /phpcs --config-set installed_paths ${INSTALLED_PATHS}
 
-php -d memory_limit=-1 /phpcs ${DIR_TO_SCAN} --standard=${STANDARD} --extensions=${EXTENSIONS} -pv
+php -d memory_limit=-1 /phpcs -i
+
+php -d memory_limit=-1 /phpcs ${DIR_TO_SCAN} --standard=${STANDARD} --extensions=${EXTENSIONS} --ignore="*.min.*" -pv
