@@ -32,4 +32,5 @@ runs:
     - ${{ inputs.dir }} 
     - ${{ inputs.extensions }}
     - ${{ inputs.standard }}
+    - ${{ inputs.bin }}
     - ${{ inputs.installed_paths }}
