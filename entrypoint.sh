@@ -22,27 +22,33 @@ else
 fi
 
 if [ -z "$4" ]; then
+  BIN="/phpcs"
+else
+  BIN="$4"
+fi
+
+if [ -z "$5" ]; then
   INSTALLED_PATHS="vendor/drupal/coder/coder_sniffer"
 else
-  INSTALLED_PATHS="$4"
+  INSTALLED_PATHS="$5"
 fi
 
 echo "## Running PHPCS on ${DIR_TO_SCAN}"
 echo "PHP Version : ${PHP_FULL_VERSION}"
 
 if [ ! -d "${DIR_TO_SCAN}" ] && [ ! -f "${DIR_TO_SCAN}" ]; then
-  php -d memory_limit=-1 /phpcs -pv
+  php -d memory_limit=-1 $BIN -pv
   echo "\nInvalid directory or file: ${DIR_TO_SCAN}"
   echo "\n\n"
 
   exit 2
 fi
 
-echo "php -d memory_limit=-1 /phpcs ${DIR_TO_SCAN} --standard=${STANDARD} --extensions=${EXTENSIONS} -pv"
+echo "php -d memory_limit=-1 $BIN ${DIR_TO_SCAN} --standard=${STANDARD} --extensions=${EXTENSIONS} -pv"
 echo "setting installed_paths to ${INSTALLED_PATHS}"
 
-php -d memory_limit=-1 /phpcs --config-set installed_paths ${INSTALLED_PATHS}
+php -d memory_limit=-1 $BIN --config-set installed_paths ${INSTALLED_PATHS}
 
-php -d memory_limit=-1 /phpcs -i
+php -d memory_limit=-1 $BIN -i
 
-php -d memory_limit=-1 /phpcs ${DIR_TO_SCAN} --standard=${STANDARD} --extensions=${EXTENSIONS} --ignore="*.min.*" -pv
+php -d memory_limit=-1 $BIN ${DIR_TO_SCAN} --standard=${STANDARD} --extensions=${EXTENSIONS} --ignore="*.min.*" -pv
