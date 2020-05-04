@@ -29,6 +29,3 @@ runs:
     - ${{ inputs.extensions }}
     - ${{ inputs.standard }}
     - ${{ inputs.installed_paths }}
-branding:
-  icon: 'zap'
-  color: 'purple'
