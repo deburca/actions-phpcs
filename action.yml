@@ -17,6 +17,10 @@ inputs:
     description: 'Standard used to check code style'
     required: false
     default: 'DrupalPractice'
+  bin:
+    description: 'PHPCS binary to use.'
+    required: false
+    default: '/phpcs'
   installed_paths:
     description: 'Location of the sniffs'
     required: false
