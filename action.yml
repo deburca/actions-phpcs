@@ -9,28 +9,13 @@ inputs:
     description: 'Folder to check code style'
     required: false
     default: '.'
-  extensions:
-    description: 'List of extensions to check code style'
-    required: false
-    default: 'php,module,inc,install,test,profile,theme,css,info,txt,md,yml'
-  standard:
-    description: 'Standard used to check code style'
-    required: false
-    default: 'DrupalPractice'
-  bin:
-    description: 'PHPCS binary to use.'
+  script:
+    description: 'Composer script to execute'
     required: false
     default: '/phpcs'
-  installed_paths:
-    description: 'Location of the sniffs'
-    required: false
-    default: 'vendor/drupal/coder/coder_sniffer'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.dir }} 
-    - ${{ inputs.extensions }}
-    - ${{ inputs.standard }}
-    - ${{ inputs.bin }}
-    - ${{ inputs.installed_paths }}
+    - ${{ inputs.script }}
